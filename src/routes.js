@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
 
 import ContactUs from './views/ContactUs';
 import Dashboard from './views/Dashboard';
@@ -17,6 +17,7 @@ export default class Routes extends Component {
           <Route path="/products" component={Products} />
           <Route path="/enquiry" component={Enquiry} />
           <Route path="/contactus" component={ContactUs} />
+          <Redirect from="/" to="dashboard" />
         </Switch>
       </Router>
     )

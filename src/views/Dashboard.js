@@ -111,13 +111,14 @@ export default function Dashboard() {
           {
             dashboard3data.length &&
             (<Coverflow
-              width="1200"
-              height="1000"
-              displayQuantityOfSide={1}
+              // width="1200"
+              // height="1000"
+              displayQuantityOfSide={3}
               navigation={false}
               infiniteScroll={true}
               enableScroll={false}
               enableHeading={false}
+              rotate = {90}
               clickable={true}
               active={0}
               media={{
