@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardHeader, CardBody, CardFooter, CardTitle, Row, Col, } from "reactstrap";
-//import { Button } from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
+import { Button, Card, CardHeader, CardBody, CardFooter, CardTitle, Row, Col, } from "reactstrap";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './modal.scss';
 
@@ -18,27 +16,54 @@ export default function Modal({ title, show, data, onModalClose, onModalEnquire,
         return null;
 
     return (
-        <Col lg="12" md="6" sm="6">
-            <Row>
-                <Col lg="6" md="6" sm="6" style={{ display: 'flex' }}>
-                    <h1>{data.number}</h1>
-                </Col>
-                <Col lg="6" md="6" sm="6" style={{ display: 'flex' }}>
-                    <button className="toggle-button" onClick={onEnquire}>
-                        ENQUIRE
-                    </button>
-                </Col>
-            </Row>
-            <Row>
-                <Col lg="6" md="6" sm="6">
-                    <img src={data.uri} />
-                </Col>
+        // <Col lg="12" md="6" sm="6">
+        //     <Row>
+        //         <Col lg="6" md="6" sm="6" style={{ display: 'flex' }}>
+        //             <h1>{data.number}</h1>
+        //         </Col>
+        //         <Col lg="6" md="6" sm="6" style={{ display: 'flex' }}>
+        //             <button className="toggle-button" onClick={onEnquire}>
+        //                 ENQUIRE
+        //             </button>
+        //         </Col>
+        //     </Row>
+        //     <Row>
+        //         <Col lg="6" md="6" sm="6">
+        //             <img src={data.uri} />
+        //         </Col>
 
-                <Col lg="6" md="6" sm="6" style={{ display: 'flex' }}>
-                    <textarea className="tarea" id="noter-text-area" name="textarea" placeholder="specifications" value={data.specification} style={styles.specificationInput} onChange = {()=>{}} />
-                </Col>
-            </Row>
-        </Col>
+        //         <Col lg="6" md="6" sm="6" style={{ display: 'flex' }}>
+        //             <textarea className="tarea" id="noter-text-area" name="textarea" placeholder="specifications" value={data.specification} style={styles.specificationInput} onChange = {()=>{}} />
+        //         </Col>
+        //     </Row>
+        // </Col>
+
+        <div className = "itemContainer">
+            <Col lg="6" md="6" sm="6" style = {{ display : 'flex'}}>
+                <img src={data.uri} className="itemImage" />
+            </Col>
+
+            <Col lg="6" md="6" sm="6">
+                <Row style = {{ marginBottom : 20 }}>
+                    <Button
+                        className="btn-round"
+                        color="secondary"
+                        onClick={onEnquire}
+                        style = {{ margin : 'auto', fontSize : 30, borderRadius : 6, fontWeight : 'lighter' }}
+                    >
+                        ENQUIRE
+                    </Button>
+                </Row>
+
+                <Row style = {{ marginBottom : 20 }}>
+                    <h1 style={{ margin: 'auto', fontWeight : 'bold', color : '#d23b45', textAlign : 'center' }}>{data.number}</h1>
+                </Row>
+
+                <Row>
+                    <textarea className="tarea" id="noter-text-area" name="textarea" placeholder="specifications" value={data.specification} style={styles.specificationInput} onChange={() => { }} />
+                </Row>
+            </Col>
+        </div>
     );
 }
 
@@ -72,8 +97,9 @@ const styles = {
         width: '80%',
         height: 400,
         margin: 'auto',
-        backgroundColor : 'rgba(0,0,0,0)',
+        backgroundColor: 'rgba(0,0,0,0)',
         fontSize: 20,
         borderWidth: 0,
+        textAlign: 'center',
     }
 }

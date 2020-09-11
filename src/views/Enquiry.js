@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Card,
@@ -9,116 +9,96 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import './../assets/css/enquiry.css';
 
-export default function Enquiry(){
+export default function Enquiry() {
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem('prepareEnquiry')));
+  }, [])
+
+  const onEnquire = () => {
+    console.log("On enquireing");
+  }
+
+  const onRemoveItemClicked = (item) => {
+    console.log("Remove", item);
+    let newItems = [];
+    for (let i = 0; i < items.length; i++)
+      if (item.imagename != items[i].imagename)
+        newItems.push(items[i]);
+    localStorage.setItem('prepareEnquiry', JSON.stringify(newItems));
+    setItems(newItems);
+  }
+
+
+  function RenderItem(props) {
+    const onRemoveClicked = () => {
+      console.log("remove");
+      props._onRemoveClicked(props.item);
+    }
+    return (
+      <Card className="card-stats">
+        <CardBody style={{ display: 'flex' }}>
+          <div className="RenderItemDiv">
+            <div>
+              <img src={props.item.uri} />
+            </div>
+            <div style={{ width: '100%' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div></div>
+                <Button
+                  className="btn-round"
+                  color="secondary"
+                  onClick={onRemoveClicked}
+                  style={{ fontSize: 20, borderRadius: 0, fontWeight: 'lighter', padding: 8, marginRight: 13 }}
+                >
+                  REMOVE
+              </Button>
+              </div>
+              <h2 className="RenderItemTitle">{props.item.number}</h2>
+            </div>
+          </div>
+        </CardBody>
+      </Card>
+
+    );
+  }
+
+
   return (
     <>
-      <div className="content">
+      <div className="content" style={{ margin: 30, marginTop: 120 }}>
+        <div className="RenderItemContainer">
+          <h1 style={{ textAlign: 'center' }}>My Enquiry</h1>
 
-        <Row>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <img
-                  alt="..."
-                  src={require("assets/img/jan-sendereks.jpg")}
-                />
-              </CardBody>
-              <CardFooter>
-                <hr />
-                <h3 style={{ textAlign: 'center' }}>
-                  The Life of Paper Dashboard
-                  </h3>
-              </CardFooter>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <Row>
-                  <Col md="4" xs="5">
-                    <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-money-coins text-success" />
-                    </div>
-                  </Col>
-                  <Col md="8" xs="7">
-                    <div className="numbers">
-                      <p className="card-category">Revenue</p>
-                      <CardTitle tag="p">$ 1,345</CardTitle>
-                      <p />
-                    </div>
-                  </Col>
-                </Row>
-              </CardBody>
-              <CardFooter>
-                <hr />
-                <div className="stats">
-                  <i className="far fa-calendar" /> Last day
-                  </div>
-              </CardFooter>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <Row>
-                  <Col md="4" xs="5">
-                    <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-vector text-danger" />
-                    </div>
-                  </Col>
-                  <Col md="8" xs="7">
-                    <div className="numbers">
-                      <p className="card-category">Errors</p>
-                      <CardTitle tag="p">23</CardTitle>
-                      <p />
-                    </div>
-                  </Col>
-                </Row>
-              </CardBody>
-              <CardFooter>
-                <hr />
-                <div className="stats">
-                  <i className="far fa-clock" /> In the last hour
-                  </div>
-              </CardFooter>
-            </Card>
-          </Col>
-          <Col lg="3" md="6" sm="6">
-            <Card className="card-stats">
-              <CardBody>
-                <Row>
-                  <Col md="4" xs="5">
-                    <div className="icon-big text-center icon-warning">
-                      <i className="nc-icon nc-favourite-28 text-primary" />
-                    </div>
-                  </Col>
-                  <Col md="8" xs="7">
-                    <div className="numbers">
-                      <p className="card-category">Followers</p>
-                      <CardTitle tag="p">+45K</CardTitle>
-                      <p />
-                    </div>
-                  </Col>
-                </Row>
-              </CardBody>
-              <CardFooter>
-                <hr />
-                <div className="stats">
-                  <i className="fas fa-sync-alt" /> Update now
-                  </div>
-              </CardFooter>
-            </Card>
-          </Col>
-        </Row>
-
-        <Button
-          className="btn-round"
-          color="primary"
-          type="submit"
-        >
-          Update Profile
+          {
+            items.length > 0 ?
+              (<div className="enquireActionDiv">
+                <Button
+                  className="btn-round"
+                  color="danger"
+                  onClick={onEnquire}
+                  style={{ fontSize: 30, borderRadius: 6, fontWeight: 'lighter' }}
+                >
+                  ENQUIRE
                 </Button>
+              </div>) : (
+                <h2 style={{ textAlign: 'center' }}>Your enquiry list is empty.</h2>
+              )
+          }
+
+
+          {
+            items.map((item, i) => {
+              return <RenderItem
+                item={item}
+                key={i}
+                _onRemoveClicked={(item) => onRemoveItemClicked(item)}
+              />
+            })
+          }
+        </div>
       </div>
     </>
   );

@@ -56,7 +56,7 @@
 
         // width: 400px;
         // height: 400px;
-        //margin: 10px;
+        margin: 20px;
         background-color: rgb(222,222,222);
     }
     .content {
@@ -80,6 +80,17 @@
     color: #02270d;
     line-height: 1;
     box-shadow: 4px 4px 16px rgba(black, 0.2);
+}
+.itemImage {
+    margin : auto;
+}
+.itemContainer {
+    display : flex;
+    flex-wrap: wrap;
+    width : 80%;
+    margin: auto;
+    background-color: white;
+    padding : 20px;
 }
 
 CircularProgress {

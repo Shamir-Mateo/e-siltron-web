@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, CardHeader, CardBody, CardFooter, CardTitle, Row, Col, } from "reactstrap";
 import { firebaseApp } from './../Helper/firebaseHelper';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Loader from 'react-loader-spinner';
 import Modal from './../components/Modal';
+import './../assets/css/product.css';
 const db = firebaseApp.firestore();
 const storage = firebaseApp.storage();
-
 export default function Products() {
 
   const [step, setStep] = useState(0);
@@ -168,7 +170,7 @@ export default function Products() {
 
 
   const ItemClick = (item) => {
-    console.log(item);
+    //console.log(item);
     if (step == 0) {
       getFirebaseSubCategoryData(item.name);
       setCurrentCategory(item.name);
@@ -186,8 +188,26 @@ export default function Products() {
   }
 
   const onEnquireClick = (item) => {
-    console.log(item);
+    //console.log(item);
+    //toast("Wow so easy !");
+    alert("Added to your enquiry list.");
+
+
+    let prepareEnquiry = JSON.parse(localStorage.getItem('prepareEnquiry')) || [];
+    let alreadyContains = false;
+    prepareEnquiry.forEach(peitem => {
+      if (peitem.uri == item.uri)
+        alreadyContains = true;
+    })
+
+    if (alreadyContains == false)
+      prepareEnquiry.push(item);
+
+    localStorage.setItem('prepareEnquiry', JSON.stringify(prepareEnquiry));
+    console.log(JSON.parse(localStorage.getItem('prepareEnquiry')));
   }
+
+
 
   const onGoBackButtonClicked = () => {
     console.log("GoBack clicked");
@@ -203,17 +223,22 @@ export default function Products() {
   }
   return (
     <>
-      <div className="content">
+      <div className="content" style={{ margin: 30, marginTop: 120 }}>
 
 
-        <Row style={{ justifyContent: "space-between", alignItems: "center" }}>
-          <Button
-            className="btn-round"
-            color="primary"
-            onClick={() => onGoBackButtonClicked()}
-          >
-            GO BACK
-          </Button>
+        <Row style={{ justifyContent: "space-between", alignItems: "center", marginLeft: 30, marginRight: 30 }}>
+          {
+            step != 0 ?
+              (<Button
+                className="btn-round"
+                color="primary"
+                onClick={() => onGoBackButtonClicked()}
+              >
+                <i className="nc-icon nc-minimal-left" style={{ padding: 10 }} />
+              </Button>)
+              : null
+          }
+          <div></div>
 
           <h3 style={{ marginBottom: 0, color: '#004499' }} >
             {step == 0 && "Please Select Category"}
