@@ -2,7 +2,6 @@
   "name": "siltron-web-app",
   "version": "1.2.0",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/paper-dashboard-react/#/dashboard",
   "dependencies": {
     "@firebase/storage": "^0.3.42",
     "@material-ui/core": "^4.11.0",
