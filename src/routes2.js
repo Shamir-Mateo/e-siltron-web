@@ -19,7 +19,7 @@ var routes = [
     layout: "/",
   },
   {
-    path: "/enquiry",
+    path: "/enquire",
     name: "Enquiry",
     icon: "nc-icon nc-book-bookmark",
     component: Enquiry,

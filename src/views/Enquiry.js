@@ -14,7 +14,8 @@ import './../assets/css/enquiry.css';
 export default function Enquiry() {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem('prepareEnquiry')));
+    let lsItems = JSON.parse(localStorage.getItem('prepareEnquiry')) || [];
+    setItems(lsItems);
   }, [])
 
   const onEnquire = () => {
