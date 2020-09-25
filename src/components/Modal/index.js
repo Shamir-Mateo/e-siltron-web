@@ -39,12 +39,12 @@ export default function Modal({ title, show, data, onModalClose, onModalEnquire,
         // </Col>
 
         <div className = "itemContainer">
-            <Col lg="6" md="6" sm="6" style = {{ display : 'flex'}}>
+            <Col lg="7" md="6" sm="6" style = {{ display : 'flex'}}>
                 <img src={data.uri} className="itemImage" />
             </Col>
 
-            <Col lg="6" md="6" sm="6">
-                <Row style = {{ marginBottom : 20 }}>
+            <Col lg="5" md="6" sm="6">
+                <Row style = {{ marginBottom : 20, marginTop : 20 }}>
                     <Button
                         className="btn-round"
                         color="secondary"
@@ -55,7 +55,7 @@ export default function Modal({ title, show, data, onModalClose, onModalEnquire,
                     </Button>
                 </Row>
 
-                <Row style = {{ marginBottom : 20 }}>
+                <Row style = {{ marginBottom : 20, marginTop : 40 }}>
                     <h1 style={{ margin: 'auto', fontWeight : 'bold', color : '#d23b45', textAlign : 'center' }}>{data.number}</h1>
                 </Row>
 

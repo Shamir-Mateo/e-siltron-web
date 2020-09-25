@@ -3,10 +3,15 @@ img {
     height : 300px;
     margin-right: 20px;
 }
+
+input {
+    font-size: 24px;
+}
 .enquireActionDiv {
     display: flex;
     margin : auto;
-    justify-content: flex-end;
+    justify-content: space-between;
+    margin-bottom: 5px;
     /* padding-bottom : 5px; */
 }
 
