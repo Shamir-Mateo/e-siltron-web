@@ -1,45 +1,42 @@
-
-@import '../../styles/config/config.scss';
+@import "../../styles/config/config.scss";
 
 .nav {
-  position: relative;
-  padding : 10px;
-  
+    position: relative;
+    padding: 0px;
 
-  [data-nav-position="right"] &,
-  [data-nav-position="center"] & {
-      @include media-query($medium-down) {
-          position: fixed;
-              top: 0;
-              left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: var(--color-white);
-          pointer-events: none;
-          padding: 24px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          z-index: 9;
-          opacity: 0;
-
-          @supports (backdrop-filter: blur(10px)) {
-            background: rgba(var(--color-white),0.6);
-            backdrop-filter: blur(10px);
-          }
-
-          &.open {
-              pointer-events: auto;
-          }
-      }
-  }
-
-  [data-nav-position="overlay"] & {
-    
-        position: fixed;
+    [data-nav-position="right"] &,
+    [data-nav-position="center"] & {
+        @include media-query($medium-down) {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--color-white);
+            pointer-events: none;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9;
+            opacity: 0;
+
+            @supports (backdrop-filter: blur(10px)) {
+                background: rgba(var(--color-white), 0.6);
+                backdrop-filter: blur(10px);
+            }
+
+            &.open {
+                pointer-events: auto;
+            }
+        }
+    }
+
+    [data-nav-position="overlay"] & {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100vw;
         height: 100vh;
         background: var(--color-white);
@@ -54,17 +51,16 @@
         opacity: 0;
 
         @supports (backdrop-filter: blur(10px)) {
-            background: rgba(var(--color-white),0.6);
+            background: rgba(var(--color-white), 0.6);
             backdrop-filter: blur(10px);
         }
 
         &.open {
             pointer-events: auto;
         }
-    
-  }
+    }
 
-      @include media-query($large-up) {
+    @include media-query($large-up) {
         [data-nav-position="right"] &,
         [data-nav-position="center"] & {
             place-self: center;
@@ -78,18 +74,16 @@
         [data-nav-position="right"] & {
             justify-self: end;
         }
-      }
+    }
 
-  &__item {
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--color-black);
-      color : white;
-      letter-spacing: 2.22px;
-      text-align: left;
-      text-transform: uppercase;
-      margin: 24px;
-  }
+    &__item {
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--color-black);
+        color: white;
+        letter-spacing: 2.22px;
+        text-align: left;
+        text-transform: uppercase;
+        margin: 24px;
+    }
 }
-
-

@@ -113,7 +113,7 @@ export default function Dashboard() {
             (<Coverflow
               // width="1200"
               // height="1000"
-              displayQuantityOfSide={3}
+              displayQuantityOfSide={2}
               navigation={false}
               infiniteScroll={true}
               enableScroll={false}

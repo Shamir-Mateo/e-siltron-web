@@ -44,7 +44,7 @@ export default function ContactUs() {
             </div>
 
             <div>
-              <a href="https://amazon.com" target="_blank">
+              <a href="https://www.amazon.ae/s?me=A14HXOL16FUM7T&marketplaceID=A2VIGQ35RCS4UG" target="_blank">
                 <div className = "shopNowBtn">
                   <img className="amazonImage" src={require("./../Images/amazon.jpeg")} />
                   <p className="amazonP">SHOP NOW</p>
