@@ -221,6 +221,14 @@ export default function Products() {
       setStep(2);
     }
   }
+
+  const onWhatsAppClicked = () => {
+    console.log("onwhatsapp");
+    let url = "https://wa.me/message/6O2NYLXDO7RED1";
+    var win = window.open(url, '_blank');
+    win.focus();
+  }
+
   return (
     <>
       <div className="content" style={{ margin: 30, marginTop: 120 }}>
@@ -300,6 +308,12 @@ export default function Products() {
             }
           </Row>)
         }
+
+
+        <div style={styles.WhatsAppStyle} onClick={() => onWhatsAppClicked()}>
+          <img className="amazonImage" src={require("./../Images/whatsapp.png")} style = {{ width : 80, height : 80}} />
+        </div>
+
       </div>
     </>
   );
@@ -314,5 +328,10 @@ const styles = {
     marginTop: 50,
     backgroundColor: 'rgba(255,255,255,0.05)',
     borderRadius: 20,
+  },
+  WhatsAppStyle: {
+    position: 'fixed',
+    bottom: 20,
+    filter: 'drop-shadow(0 0 0.3rem white)'
   },
 }

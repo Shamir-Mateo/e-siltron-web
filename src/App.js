@@ -31,7 +31,7 @@ function App() {
 
   const iosUrl = 'https://itunes.apple.com/us/app/all-of-the-lights/id959389722?mt=8';
   //const andUrl = 'https://itunes.apple.com/us/app/all-of-the-lights/id959389722?mt=8';
-  const andUrl = 'https://gofile.io/d/pn2IvW';
+  const andUrl = 'https://play.google.com/store/apps/details?id=com.siltron';
   return (
     <div className="App">
       {/* <Navigation /> */}
